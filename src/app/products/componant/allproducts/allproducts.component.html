@@ -1,0 +1,82 @@
+<!-- 
+<div class="container-xl">
+	<div class="row">
+		<div class="col-md-12">
+			<h2>Featured <b>Products</b></h2>
+			<app-select [data]="AllCategory" [title]="title" (selectedValue)="filterProduct($event)"></app-select>
+			<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="0">
+	
+				
+              <br> <br>
+			<div *ngIf="!loading" class="carousel-inner">
+				<div class="item carousel-item active">
+					<div class="row">
+						<div class="col-sm-3" *ngFor="let product of products" >
+							<app-product [data]="product" (item)="addToCart($event)"></app-product>
+						</div>
+						
+					</div>
+				</div>
+			
+			
+		</div>
+		</div>
+	</div>
+</div> -->
+<button  data-toggle="modal" data-target="#myModal" class="btn btn-success m-5">Add Product</button>
+<div class="col-sm-3" *ngFor="let product of products" >
+	<app-product [data]="product" (item)="addToCart($event)"></app-product>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+    <div class="modal-dialog d-flex justify-content-center">
+        <div class="modal-content w-75">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel2">Add Product</h5>
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body p-4">
+                <form [formGroup]="form">
+                    <!-- Name input -->
+                    <div data-mdb-input-init class="form-outline mb-4">
+						<label class="form-label" for="name2">Title</label>
+                        <input formControlName="title" type="text" id="name2" class="form-control" placeholder="Title" />
+                        
+                    </div>
+
+                    <!-- Email input -->
+                    <div data-mdb-input-init class="form-outline mb-4">
+						<label class="form-label" for="email2">Price</label>
+                        <input formControlName="price"  type="number" id="email2" class="form-control" placeholder="Price" />
+                    </div>
+
+                    <!-- password input -->
+                   
+					<div data-mdb-input-init class="form-outline mb-4">
+						<app-select (selectedValue)="selectedcat($event)" style="border: none;" 
+						[all]="false"  class="form-select text-center" [data]="AllCategory" [title]="title"></app-select>
+					</div>
+					<div data-mdb-input-init class="form-outline mb-4">
+						<label class="form-label" for="email2">Image</label>
+						<img style="width: 100%; max-height: 75px;" src="{{base64}}" alt="">
+                        <input   (change)="getImagePath($event)" type="file" id="email2" class="form-control"  />
+                    </div>
+					<div data-mdb-input-init class="form-outline mb-4">
+						<label class="form-label" for="email2">Description</label>
+						<br>
+                        <textarea style="max-width: 100%; min-width: 100%; min-height: 100px; max-height: 100px;"
+						formControlName="description" placeholder="type here ....." name="" id="" cols="40" rows="2"></textarea>
+                    </div>
+					
+                    <!-- Submit button -->
+                    <button [disabled]="form.invalid" (click)="addproduct()" data-dismiss="modal"
+					 type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-success btn-block ">Add Product</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
