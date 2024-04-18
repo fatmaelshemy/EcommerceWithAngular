@@ -1,0 +1,29 @@
+
+<div class="container-xl">
+	<div class="row">
+		<div class="col-md-12">
+			<h2>Featured <b>Products</b></h2>
+			<app-select [data]="AllCategory" [title]="title" (selectedValue)="filterProduct($event)"></app-select>
+			<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="0">
+	
+				
+              <br> <br>
+			<div *ngIf="!loading" class="carousel-inner">
+				<div class="item carousel-item active">
+					<div class="row">
+						<div class="col-sm-3" *ngFor="let product of products" >
+							<app-product [data]="product" (item)="addToCart($event)"></app-product>
+						</div>
+						
+					</div>
+				</div>
+			
+			
+		</div>
+		</div>
+	</div>
+</div>
+<div  *ngIf="loading" class="spinner text-center w-100">
+<app-spinner></app-spinner>
+</div>
+

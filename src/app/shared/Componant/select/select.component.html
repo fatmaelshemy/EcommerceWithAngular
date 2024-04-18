@@ -1,0 +1,6 @@
+<label>{{title}}</label>	
+<select class="form-select" data-live-search="true" (change)="detectChanges($event)" >
+    <option selected  >All </option>
+    <option  *ngFor="let cat of data" [value]="cat">{{cat}}</option>
+    
+  </select>

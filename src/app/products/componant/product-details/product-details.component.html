@@ -1,0 +1,54 @@
+<div class="container d-flex justify-content-center" *ngIf="!loading">
+    <figure class="card card-product-grid card-lg" > <a href="#" class="img-wrap" data-abc="true"> 
+        <img [src]="data.image"> </a>
+        <figcaption class="info-wrap">
+            <div class="row">
+                <div class="col-md-9 col-xs-9"> <a href="#" class="title fs-4" data-abc="true">{{data.title}}</a>
+                     <span class="rated fs-6">{{data.category}}</span> </div>
+                <div class="col-md-3 col-xs-3">
+             <div class="rating text-right"> <i class="fa fa-star"></i> 
+                <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> 
+                <span class="rated fs-6">{{data.rating.rate}}</span> </div>
+                </div>
+            </div>
+        </figcaption>
+        <div class="bottom-wrap-payment">
+            <figcaption class="info-wrap">
+                <div class="row">
+                    <div class="col-md-9 col-xs-9"> <a href="#" class="title"
+                         data-abc="true">
+                         <span style="color: teal; font-weight: bold;">Price: </span>
+                         ${{data.price}}</a> <span style="font-size: 17px;" class="rated">
+                            <span style="color: teal; font-weight: bold;">Description: </span>
+                            {{data.description}}</span> 
+                        </div>
+                    <div class="col-md-3 col-xs-3">
+                        <div class="rating text-right">
+                            <span style="color: teal; font-weight: bold;">count: </span>
+                             {{data.rating.count}} </div>
+                    </div>
+                </div>
+            </figcaption>
+        </div>
+       
+    <div class="bottom-wrap-payment">
+        
+            <div class="row justify-content-evenly" >
+                <div  class="bottom-wrap w-25 "> <a href="#" class="btn btn-primary float-right  " data-abc="true"> Buy now </a>
+                    </div>
+                <div class="price-wrap w-50">
+                    <a href="#" style="background-color: brown; color: white;" class="btn  " data-abc="true"> Cancel </a>
+                </div>
+            </div>
+         
+       
+    </div>
+    </figure>
+</div>
+
+<div  *ngIf="loading" class="spinner text-center w-100">
+    <app-spinner></app-spinner>
+    </div>
+
+
+
